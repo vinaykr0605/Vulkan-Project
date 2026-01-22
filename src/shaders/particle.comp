@@ -1,0 +1,29 @@
+#version 450
+
+struct Particle {
+    vec2 pos;
+    vec2 vel;
+};
+
+layout(std140, binding = 0) buffer Particles {
+    Particle particles[];
+};
+
+layout(local_size_x = 256) in;
+
+void main() {
+    uint index = gl_GlobalInvocationID.x;
+    if (index >= particles.length()) return;
+
+    // Simple physics: move particles and bounce off walls
+    vec2 pos = particles[index].pos;
+    vec2 vel = particles[index].vel;
+
+    pos += vel * 0.01;
+
+    if (pos.x < -1.0 || pos.x > 1.0) vel.x = -vel.x;
+    if (pos.y < -1.0 || pos.y > 1.0) vel.y = -vel.y;
+
+    particles[index].pos = pos;
+    particles[index].vel = vel;
+}

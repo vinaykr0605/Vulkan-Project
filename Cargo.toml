@@ -1,0 +1,16 @@
+[package]
+name = "vulkan-particle-demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ash = "0.38"
+winit = "0.29"
+raw-window-handle = "0.6"
+shaderc = "0.9"
+bytemuck = { version = "1.14", features = ["derive"] }
+log = "0.4"
+env_logger = "0.10"
+ash-window = "0.13"
+glam = "0.24" # For math
+rand = "0.8"
