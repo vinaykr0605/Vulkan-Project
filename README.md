@@ -1,2 +1,2 @@
-# Vulkan-Projects
+# Vulkan-Project
 Running particle system with 10k particles.
